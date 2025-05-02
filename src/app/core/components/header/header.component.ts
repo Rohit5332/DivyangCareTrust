@@ -234,7 +234,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       z-index: 9999;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
-      padding: var(--space-8) var(--space-4);
+      padding: var(--space-3) var(--space-2) var(--space-8) var(--space-2);
       overflow-y: auto;
     }
     
@@ -359,6 +359,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       font-size: 2rem;
       cursor: pointer;
       z-index: 10001;
+    }
+
+    .mobile-menu nav {
+      margin-top: 40px;
     }
   `]
 })
