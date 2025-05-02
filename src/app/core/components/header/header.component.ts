@@ -113,14 +113,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     }
     
     .logo-image {
-      height: 100px;
-      width: 100px;
+      height: 70px;
+      width: 70px;
       object-fit: cover;
       border-radius: 50%;
     }
     
     .logo-text {
-      margin-left: var(--space-1);
+      margin-left: var(--space-0);
     }
 
     .nav-container {
@@ -215,6 +215,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: var(--space-3);
     }
     
     @media (min-width: 992px) {
