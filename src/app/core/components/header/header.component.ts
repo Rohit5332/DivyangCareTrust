@@ -48,6 +48,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       </div>
       
       <div class="mobile-menu" [class.open]="mobileMenuOpen()">
+        <button class="mobile-menu-close" (click)="closeMobileMenu()" aria-label="Close menu">
+          <span class="material-symbols-outlined">close</span>
+        </button>
         <nav>
           <ul>
             <li><a routerLink="/" (click)="closeMobileMenu()">Home</a></li>
@@ -227,7 +230,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       width: 100%;
       height: 100vh;
       background-color: white;
-      z-index: 999;
+      z-index: 9999;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
       padding: var(--space-8) var(--space-4);
@@ -330,6 +333,31 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
     .dropdown-menu a:hover {
       background: var(--primary-50);
+    }
+
+    @media (max-width: 600px) {
+      .logo-image {
+        height: 50px;
+        width: 50px;
+      }
+      .logo-text {
+        font-size: 1rem;
+      }
+      .header-container {
+        padding: 0 var(--space-1);
+      }
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--neutral-800);
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10001;
     }
   `]
 })
