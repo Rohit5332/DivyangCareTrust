@@ -26,7 +26,7 @@ import { RouterLink } from '@angular/router';
       height: 80vh;
       min-height: 500px;
       max-height: 800px;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/gallery/groupPhotoGallery1.jpg');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/gallery/groupPhotoGallery1.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
