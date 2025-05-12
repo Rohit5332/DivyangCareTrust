@@ -164,3 +164,7 @@ When contributing to this project:
    - if the browser are in the nested folder then remove that folder and bring everything outside in the docs from the browser folder and delete that folder
    - use command- "mv docs/browser/* docs/" and then --> "rm -r docs/browser".
    - once done use git command to add and then commit the changes and push
+   - git add .
+   - git commit -m
+   - git push
+   - check the URL after few minutes -"https://rohit5332.github.io/DivyangCareTrust/"
