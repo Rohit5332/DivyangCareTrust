@@ -155,3 +155,12 @@ When contributing to this project:
    - Ensure WCAG compliance
    - Add ARIA labels
    - Implement keyboard navigation 
+
+
+5. **To Build the Project on the github**
+   - After commit the changes and push to main branch
+   - build the project in the doc file use command- "ng build --output-path=docs --base-href=/DivyangCareTrust/"
+   - then make sure index.html and images files are inside docs not in the assets folder
+   - if the browser are in the nested folder then remove that folder and bring everything outside in the docs from the browser folder and delete that folder
+   - use command- "mv docs/browser/* docs/" and then --> "rm -r docs/browser".
+   - once done use git command to add and then commit the changes and push
