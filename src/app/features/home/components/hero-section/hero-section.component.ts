@@ -7,7 +7,8 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <section class="hero">
+  <section class="hero">\
+  <img src="/assets/images/gallery/groupPhotoGallery1.jpg" alt="Hero Image" class="hero-image" class="hero-image">
       <div class="hero-content container">
         <div class="hero-text fade-in">
           <h1>Empowering Lives, Enriching Earth</h1>
@@ -26,12 +27,21 @@ import { RouterLink } from '@angular/router';
       height: 80vh;
       min-height: 500px;
       max-height: 800px;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/gallery/groupPhotoGallery1.jpg');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: center;
       color: white;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
     }
     
     .hero-content {
