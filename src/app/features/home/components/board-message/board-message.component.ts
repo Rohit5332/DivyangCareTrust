@@ -7,6 +7,7 @@ interface BoardMessage {
   role: string;
   image: string;
   message: string;
+  facilities: string[];
 }
 
 @Component({
@@ -42,6 +43,12 @@ interface BoardMessage {
               <div class="board-details">
                 <h4>{{ msg.name }}</h4>
                 <p class="role">{{ msg.role }}</p>
+                <div class="facilities">
+                  <h5>Services & Facilities:</h5>
+                  <ul class="facilities-list">
+                    <li *ngFor="let facility of msg.facilities">{{ facility }}</li>
+                  </ul>
+                </div>
                 <p class="message">"{{ msg.message }}"</p>
               </div>
             </div>
@@ -136,6 +143,35 @@ interface BoardMessage {
         max-width: 100%;
       }
     }
+    .facilities {
+      margin: var(--space-3) 0;
+      text-align: left;
+      width: 100%;
+    }
+    .facilities h5 {
+      color: var(--primary-600);
+      margin-bottom: var(--space-2);
+      font-size: 1rem;
+    }
+    .facilities-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .facilities-list li {
+      color: var(--neutral-700);
+      font-size: 0.9rem;
+      padding: var(--space-1) 0;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    .facilities-list li:last-child {
+      border-bottom: none;
+    }
+    .facilities-list li:before {
+      content: "•";
+      color: var(--primary-500);
+      margin-right: var(--space-2);
+    }
     `
   ]
 })
@@ -148,28 +184,44 @@ export class BoardMessageComponent {
       name: 'Rahul Gupta',
       role: 'Board Member',
       image: '',
-      message: 'At DivyangCareTrust, our mission is to empower lives and enrich the earth. We are committed to creating opportunities for all.'
+      message: 'At DivyangCareTrust, our mission is to empower lives and enrich the earth. We are committed to creating opportunities for all.',
+      facilities: ['Community Development', 'Educational Programs']
     },
     {
       id: 2,
-      name: 'Adv. Farheen',
-      role: 'Chairperson',
+      name: 'Adv. Farheen Ansari',
+      role: 'Legal Services Director',
       image: '',
-      message: 'We believe in the power of community and compassion. Together, we can make a lasting impact.'
+      message: 'Providing comprehensive legal solutions with expertise in tax, property, family, corporate, and criminal law. Committed to delivering personalized legal services with integrity and professionalism.',
+      facilities: [
+        'Tax & Financial Legal Services',
+        'Registrations & Documentation',
+        'Real Estate & Property Law',
+        'Family & Civil Law',
+        'Corporate & Commercial Law',
+        'Criminal Law Services'
+      ]
     },
     {
       id: 3,
       name: 'Adv. Salim',
-      role: 'Chairperson',
+      role: 'Legal Services Director',
       image: '',
-      message: 'We believe in the power of community and compassion. Together, we can make a lasting impact.'
+      message: 'We believe in the power of community and compassion. Together, we can make a lasting impact.',
+      facilities: [
+        'Legal Consultation',
+        'Rights Advocacy',
+        'Documentation Support',
+        'Legal Awareness Programs'
+      ]
     },
     {
       id: 4,
       name: 'Vishal Sharma',
       role: 'Chairperson',
       image: '',
-      message: 'We believe in the power of community and compassion. Together, we can make a lasting impact.'
+      message: 'We believe in the power of community and compassion. Together, we can make a lasting impact.',
+      facilities: ['Strategic Planning', 'Resource Management']
     }
   ];
   currentIndex = 0;
