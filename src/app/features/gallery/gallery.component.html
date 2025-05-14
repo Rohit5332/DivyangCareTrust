@@ -1,27 +1,43 @@
-<div class="page-layout">
-  <section class="gallery-hero">
-    <div class="container">
-      <h1>Gallery</h1>
-      <p class="subtitle">Capturing moments of impact and community</p>
+<!-- Gallery Page -->
+<div class="min-h-screen bg-gray-50 pt-20">
+  <!-- Hero Section -->
+  <section class="bg-green-800 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Gallery</h1>
+        <p class="text-lg text-green-100">
+          Capturing moments of impact and community. Browse through our collection of memories and achievements.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="gallery-content">
-    <div class="container">
-      <div class="gallery-filters">
-        <button class="filter-btn" [class.active]="selectedCategory === 'all'" (click)="filterGallery('all')">All</button>
-        <button class="filter-btn" [class.active]="selectedCategory === 'plantation'" (click)="filterGallery('plantation')">Plantation</button>
-        <button class="filter-btn" [class.active]="selectedCategory === 'events'" (click)="filterGallery('events')">Events</button>
-        <button class="filter-btn" [class.active]="selectedCategory === 'workshops'" (click)="filterGallery('workshops')">Workshops</button>
+  <!-- Gallery Content -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-10">
+        <button 
+          *ngFor="let category of categories" 
+          (click)="filterGallery(category)"
+          [ngClass]="{
+            'bg-green-800 text-white': selectedCategory === category,
+            'bg-white text-green-800': selectedCategory !== category
+          }"
+          class="px-6 py-2 rounded-full border-2 border-green-800 font-medium transition-colors duration-200 hover:bg-green-800 hover:text-white"
+        >
+          {{category}}
+        </button>
       </div>
 
-      <div class="gallery-grid">
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         @for (item of filteredGalleryItems; track item.id) {
-          <div class="gallery-item">
-            <img [src]="item.imageUrl" [alt]="item.title" loading="lazy">
-            <div class="gallery-caption">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img [src]="item.imageUrl" [alt]="item.title" loading="lazy" class="w-full h-56 object-cover">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ item.title }}</h3>
+              <p class="text-gray-600">{{ item.description }}</p>
             </div>
           </div>
         }

@@ -9,7 +9,8 @@ import { GalleryService, GalleryItem } from '../../core/services/gallery.service
   templateUrl: './gallery.component.html'
 })
 export class GalleryComponent implements OnInit {
-  selectedCategory: string = 'all';
+  public categories: string[] = ['All', 'Plantation', 'Events', 'Workshops'];
+  selectedCategory: string = 'All';
   galleryItems: GalleryItem[] = [];
   filteredGalleryItems: GalleryItem[] = [];
 

@@ -22,16 +22,22 @@ import { BoardMessageComponent } from './components/board-message/board-message.
     BoardMessageComponent
   ],
   template: `
-    <div class="page-layout">
+    <div class="min-h-screen">
       <app-hero-section></app-hero-section>
-      <app-program-highlights></app-program-highlights>
-      <app-impact-counter></app-impact-counter>
-      <app-testimonials></app-testimonials>
-      <app-call-to-action></app-call-to-action>
-      <app-board-message></app-board-message>
+      <div class="space-y-24 py-24">
+        <app-program-highlights></app-program-highlights>
+        <app-impact-counter></app-impact-counter>
+        <app-testimonials></app-testimonials>
+        <app-board-message></app-board-message>
+        <app-call-to-action></app-call-to-action>
+      </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    :host {
+      display: block;
+    }
+  `]
 })
 export class HomeComponent {
 }

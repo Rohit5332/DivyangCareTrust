@@ -14,7 +14,7 @@ interface Testimonial {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './testimonials.component.html',
-  styleUrls: ['./testimonials.component.scss']
+  // styleUrls: ['./testimonials.component.scss']
 })
 export class TestimonialsComponent {
   testimonials: Testimonial[] = [

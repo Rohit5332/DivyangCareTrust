@@ -1,47 +1,55 @@
-<div class="page-layout">
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">Legal Services & Support</h1>
-      <p class="page-description">
-        Your trusted legal partner for comprehensive legal and financial solutions. With years of experience and a client-first approach, 
-        we handle a wide range of matters with dedication and expertise.
-      </p>
+<!-- Tasks Page -->
+<div class="min-h-screen bg-gray-50 pt-20">
+  <!-- Hero Section -->
+  <section class="bg-green-800 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Legal Services & Support</h1>
+        <p class="text-lg text-green-100">
+          Your trusted legal partner for comprehensive legal and financial solutions. With years of experience and a client-first approach, 
+          we handle a wide range of matters with dedication and expertise.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="page-content">
-    <div class="container">
+  <section class="py-16">
+    <div class="container mx-auto px-4">
       <!-- Why Choose Us -->
-      <div class="why-choose-us">
-        <h2 class="section-title">Why Choose Us?</h2>
-        <div class="features-grid">
-          <div class="feature-item">
-            <h3>Personalized Service</h3>
-            <p>Tailored legal solutions to meet your specific needs</p>
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">👥</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Personalized Service</h3>
+            <p class="text-gray-600">Tailored legal solutions to meet your specific needs</p>
           </div>
-          <div class="feature-item">
-            <h3>Strong Representation</h3>
-            <p>Experienced courtroom presence and advocacy</p>
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">⚖️</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Strong Representation</h3>
+            <p class="text-gray-600">Experienced courtroom presence and advocacy</p>
           </div>
-          <div class="feature-item">
-            <h3>Transparent Process</h3>
-            <p>Clear communication and affordable fees</p>
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">🔍</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Transparent Process</h3>
+            <p class="text-gray-600">Clear communication and affordable fees</p>
           </div>
-          <div class="feature-item">
-            <h3>Complete Confidentiality</h3>
-            <p>Your privacy and trust are our priority</p>
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">🔒</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Complete Confidentiality</h3>
+            <p class="text-gray-600">Your privacy and trust are our priority</p>
           </div>
         </div>
       </div>
 
       <!-- Filters -->
-      <div class="filters">
-        <div class="filters-grid">
-          <div class="filter-item">
-            <label class="filter-label">Service Category</label>
+      <div class="mb-12 bg-white rounded-lg shadow-lg p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Service Category</label>
             <select 
               [(ngModel)]="filters.facility" 
-              class="filter-select"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
             >
               <option value="">All Services</option>
               <option *ngFor="let facility of availableFacilities" [value]="facility">
@@ -49,11 +57,11 @@
               </option>
             </select>
           </div>
-          <div class="filter-item">
-            <label class="filter-label">Status</label>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
             <select 
               [(ngModel)]="filters.status" 
-              class="filter-select"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
             >
               <option value="">All Status</option>
               <option value="available">Available</option>
@@ -62,80 +70,92 @@
               <option value="scheduled">Scheduled</option>
             </select>
           </div>
-          <div class="filter-item">
-            <label class="filter-label">Search</label>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
             <input 
               type="text" 
               [(ngModel)]="filters.search" 
               placeholder="Search legal services..."
-              class="filter-input"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
             >
           </div>
         </div>
       </div>
 
       <!-- Services List -->
-      <div class="services-grid">
-        <div *ngFor="let service of filteredServices" class="service-card">
-          <h3 class="service-title">{{ service.title }}</h3>
-          <p class="service-description">{{ service.description }}</p>
-          <div class="service-details">
-            <p class="service-info">
-              <span class="info-label">Category:</span> {{ service.facility }}
-            </p>
-            <p class="service-info">
-              <span class="info-label">Provider:</span> {{ service.provider }}
-            </p>
-            <p class="service-info">
-              <span class="info-label">Status:</span> 
-              <span [class]="'status-badge ' + service.status">
-                {{ formatStatus(service.status) }}
-              </span>
-            </p>
-            <p class="service-info">
-              <span class="info-label">Contact:</span> {{ service.contactInfo }}
-            </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let service of filteredServices" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3 text-green-800">{{ service.title }}</h3>
+            <p class="text-gray-600 mb-4">{{ service.description }}</p>
+            <div class="space-y-2 mb-6">
+              <p class="text-sm">
+                <span class="font-medium text-gray-700">Category:</span> {{ service.facility }}
+              </p>
+              <p class="text-sm">
+                <span class="font-medium text-gray-700">Provider:</span> {{ service.provider }}
+              </p>
+              <p class="text-sm">
+                <span class="font-medium text-gray-700">Status:</span> 
+                <span [ngClass]="{
+                  'bg-green-100 text-green-800': service.status === 'available',
+                  'bg-blue-100 text-blue-800': service.status === 'in-progress',
+                  'bg-gray-100 text-gray-800': service.status === 'completed',
+                  'bg-yellow-100 text-yellow-800': service.status === 'scheduled'
+                }" class="inline-block px-2 py-1 rounded-full text-xs font-medium">
+                  {{ formatStatus(service.status) }}
+                </span>
+              </p>
+              <p class="text-sm">
+                <span class="font-medium text-gray-700">Contact:</span> {{ service.contactInfo }}
+              </p>
+            </div>
+            <button 
+              *ngIf="service.status === 'available'"
+              class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200"
+            >
+              Schedule Consultation
+            </button>
           </div>
-          <button 
-            *ngIf="service.status === 'available'"
-            class="request-button"
-          >
-            Schedule Consultation
-          </button>
         </div>
       </div>
 
       <!-- Contact Information -->
-      <div class="contact-section">
-        <h2 class="section-title">Available for Consultation</h2>
-        <p class="contact-text">
+      <div class="mt-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Available for Consultation</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
           Let legal stress be our responsibility. Contact us today for professional guidance and powerful representation.
           Available for consultation in Aligarh & Online.
         </p>
       </div>
 
       <!-- Pagination -->
-      <div class="pagination">
-        <nav class="pagination-nav">
+      <div class="mt-12">
+        <nav class="flex justify-center gap-2">
           <button 
             (click)="changePage(currentPage - 1)"
             [disabled]="currentPage === 1"
-            class="pagination-button"
+            class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            [class.opacity-50]="currentPage === 1"
           >
             Previous
           </button>
           <button 
             *ngFor="let page of getPageNumbers()"
             (click)="changePage(page)"
-            [class.active]="page === currentPage"
-            class="pagination-button"
+            [ngClass]="{
+              'bg-green-600 text-white': page === currentPage,
+              'border border-gray-300 hover:bg-gray-50': page !== currentPage
+            }"
+            class="px-4 py-2 rounded-lg"
           >
             {{ page }}
           </button>
           <button 
             (click)="changePage(currentPage + 1)"
             [disabled]="currentPage === totalPages"
-            class="pagination-button"
+            class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            [class.opacity-50]="currentPage === totalPages"
           >
             Next
           </button>

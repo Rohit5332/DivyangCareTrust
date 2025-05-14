@@ -1,6 +1,15 @@
-<div class="donation-card" [class.selected]="isSelected" (click)="selectDonation()">
-  <div class="donation-amount">
-    <span class="currency">₹</span>{{ option.amount }}
+<div
+  class="cursor-pointer rounded-lg border-2 p-6 text-center shadow-md transition-all duration-200 select-none 
+    hover:border-green-800 hover:bg-green-50 
+    mb-2"
+  [ngClass]="{
+    'border-green-800 bg-green-50 shadow-lg ring-1 ring-green-800': isSelected,
+    'border-green-700 bg-white': !isSelected
+  }"
+  (click)="selectDonation()"
+>
+  <div class="donation-amount text-3xl font-bold text-green-800 mb-2">
+    <span class="currency text-xl align-top">₹</span>{{ option.amount }}
   </div>
-  <p class="donation-description">{{ option.description }}</p>
+  <p class="donation-description text-gray-800">{{ option.description }}</p>
 </div> 

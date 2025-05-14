@@ -1,20 +1,20 @@
-<section class="impact-counter">
-  <div class="container">
-    <div class="section-header text-center mb-4">
-      <h2>Our Impact</h2>
-      <p>The numbers that showcase our commitment to creating positive change</p>
+<section class="impact-counter bg-white">
+  <div class="container mx-auto px-4 py-16">
+    <div class="section-header text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-4">Our Impact</h2>
+      <p class="text-lg text-green-800 max-w-2xl mx-auto">The numbers that showcase our commitment to creating positive change</p>
     </div>
     
-    <div class="metrics">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       @for (metric of impactMetrics; track metric.title) {
-        <div class="metric-card fade-in">
-          <div class="metric-icon">
-            <span class="material-symbols-outlined">{{ metric.icon }}</span>
+        <div class="metric-card bg-green-50 rounded-lg p-6 text-center transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border-t-4 border-green-400">
+          <div class="metric-icon text-green-600 mb-4">
+            <span class="material-symbols-outlined text-4xl">{{ metric.icon }}</span>
           </div>
-          <div class="metric-value">
+          <div class="metric-value text-3xl font-bold text-green-800 mb-2">
             <span class="counter">{{ metric.value }}</span>{{ metric.suffix }}
           </div>
-          <div class="metric-title">{{ metric.title }}</div>
+          <div class="metric-title text-green-700 font-medium">{{ metric.title }}</div>
         </div>
       }
     </div>

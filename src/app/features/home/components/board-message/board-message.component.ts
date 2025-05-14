@@ -15,7 +15,7 @@ interface BoardMessage {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './board-message.component.html',
-  styleUrls: ['./board-message.component.scss']
+  // styleUrls: ['./board-message.component.scss']
 })
 export class BoardMessageComponent {
   @Input() carousel = true;

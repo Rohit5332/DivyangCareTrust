@@ -1,129 +1,183 @@
-<div class="page-layout">
-  <section class="volunteer-hero">
-    <div class="container">
-      <h1>Join Our Volunteer Team</h1>
-      <p class="subtitle">Make a difference in the lives of differently-abled individuals by volunteering with us.</p>
+<!-- Volunteer Page -->
+<div class="min-h-screen bg-gray-50 pt-20">
+  <!-- Hero Section -->
+  <section class="bg-green-800 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Join Our Volunteer Team</h1>
+        <p class="text-lg text-green-100">
+          Make a difference in the lives of differently-abled individuals by volunteering with us.
+          Your time and skills can create lasting positive impact in our community.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="volunteer-form">
-    <div class="container">
-      <div class="form-container">
-        <h2>Volunteer Application</h2>
-        <form (ngSubmit)="onSubmit()" #volunteerForm="ngForm">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              [(ngModel)]="volunteer.name" 
-              required
-              #name="ngModel"
-            >
-            <div class="error-message" *ngIf="name.invalid && (name.dirty || name.touched)">
-              Name is required
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <!-- Why Volunteer -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Why Volunteer With Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">🤝</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Make an Impact</h3>
+            <p class="text-gray-600">Directly contribute to improving lives in your community</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">🌟</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Grow & Learn</h3>
+            <p class="text-gray-600">Develop new skills and gain valuable experience</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="text-4xl mb-4">👥</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-800">Build Community</h3>
+            <p class="text-gray-600">Connect with like-minded individuals and make new friends</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volunteer Form -->
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Volunteer Application</h2>
+          <form (ngSubmit)="onSubmit()" #volunteerForm="ngForm" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                [(ngModel)]="volunteer.name" 
+                required
+                #name="ngModel"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
+              <div class="text-red-500 text-sm mt-1" *ngIf="name.invalid && (name.dirty || name.touched)">
+                Name is required
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              [(ngModel)]="volunteer.email" 
-              required
-              #email="ngModel"
-            >
-            <div class="error-message" *ngIf="email.invalid && (email.dirty || email.touched)">
-              Valid email is required
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                [(ngModel)]="volunteer.email" 
+                required
+                #email="ngModel"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
+              <div class="text-red-500 text-sm mt-1" *ngIf="email.invalid && (email.dirty || email.touched)">
+                Valid email is required
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone" 
-              [(ngModel)]="volunteer.phone"
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="skills">Skills (comma-separated)</label>
-            <input 
-              type="text" 
-              id="skills" 
-              name="skills" 
-              [(ngModel)]="skillsInput"
-              (blur)="updateSkills()"
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="availability">Availability</label>
-            <select 
-              id="availability" 
-              name="availability" 
-              [(ngModel)]="volunteer.availability"
-            >
-              <option value="">Select availability</option>
-              <option value="weekday-morning">Weekday Mornings</option>
-              <option value="weekday-afternoon">Weekday Afternoons</option>
-              <option value="weekday-evening">Weekday Evenings</option>
-              <option value="weekend">Weekends</option>
-              <option value="flexible">Flexible</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="interests">Areas of Interest</label>
-            <div class="checkbox-group">
-              <label>
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="education" 
-                  [(ngModel)]="selectedInterests.education"
-                > Education
-              </label>
-              <label>
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="healthcare" 
-                  [(ngModel)]="selectedInterests.healthcare"
-                > Healthcare
-              </label>
-              <label>
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="events" 
-                  [(ngModel)]="selectedInterests.events"
-                > Events
-              </label>
-              <label>
-                <input 
-                  type="checkbox" 
-                  name="interests" 
-                  value="administration" 
-                  [(ngModel)]="selectedInterests.administration"
-                > Administration
-              </label>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                [(ngModel)]="volunteer.phone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
             </div>
-          </div>
 
-          <button 
-            type="submit" 
-            class="btn btn-primary" 
-            [disabled]="!volunteerForm.form.valid || isLoading"
-          >
-            {{ isLoading ? 'Submitting...' : 'Submit Application' }}
-          </button>
-        </form>
+            <div>
+              <label for="skills" class="block text-sm font-medium text-gray-700 mb-2">Skills (comma-separated)</label>
+              <input 
+                type="text" 
+                id="skills" 
+                name="skills" 
+                [(ngModel)]="skillsInput"
+                (blur)="updateSkills()"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
+            </div>
+
+            <div>
+              <label for="availability" class="block text-sm font-medium text-gray-700 mb-2">Availability</label>
+              <select 
+                id="availability" 
+                name="availability" 
+                [(ngModel)]="volunteer.availability"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
+                <option value="">Select availability</option>
+                <option value="weekday-morning">Weekday Mornings</option>
+                <option value="weekday-afternoon">Weekday Afternoons</option>
+                <option value="weekday-evening">Weekday Evenings</option>
+                <option value="weekend">Weekends</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Areas of Interest</label>
+              <div class="grid grid-cols-2 gap-4">
+                <label class="flex items-center space-x-2">
+                  <input 
+                    type="checkbox" 
+                    name="interests" 
+                    value="education" 
+                    [(ngModel)]="selectedInterests.education"
+                    class="rounded text-green-600 focus:ring-green-500"
+                  >
+                  <span class="text-gray-700">Education</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input 
+                    type="checkbox" 
+                    name="interests" 
+                    value="healthcare" 
+                    [(ngModel)]="selectedInterests.healthcare"
+                    class="rounded text-green-600 focus:ring-green-500"
+                  >
+                  <span class="text-gray-700">Healthcare</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input 
+                    type="checkbox" 
+                    name="interests" 
+                    value="events" 
+                    [(ngModel)]="selectedInterests.events"
+                    class="rounded text-green-600 focus:ring-green-500"
+                  >
+                  <span class="text-gray-700">Events</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input 
+                    type="checkbox" 
+                    name="interests" 
+                    value="administration" 
+                    [(ngModel)]="selectedInterests.administration"
+                    class="rounded text-green-600 focus:ring-green-500"
+                  >
+                  <span class="text-gray-700">Administration</span>
+                </label>
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              [disabled]="!volunteerForm.form.valid || isLoading"
+              class="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {{ isLoading ? 'Submitting...' : 'Submit Application' }}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="mt-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Make a Difference?</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Join our team of dedicated volunteers and help us create a more inclusive and supportive community.
+          Your contribution, no matter how small, can make a big difference in someone's life.
+        </p>
       </div>
     </div>
   </section>

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 interface Service {
@@ -10,68 +9,54 @@ interface Service {
   facility: string;
   provider: string;
   status: 'available' | 'in-progress' | 'completed' | 'scheduled';
-  dueDate: string;
   contactInfo: string;
+}
+
+interface Filters {
+  facility: string;
+  status: string;
+  search: string;
 }
 
 @Component({
   selector: 'app-tasks',
+  templateUrl: './tasks.component.html',
+  // styleUrls: ['./tasks.component.css'],
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
-  templateUrl: './tasks.component.html'
+  imports: [CommonModule, FormsModule]
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
   services: Service[] = [
     {
       id: 1,
       title: 'Legal Consultation',
       description: 'Professional legal advice and guidance for your specific needs.',
       facility: 'Legal Services',
-      provider: 'Adv. John Smith',
+      provider: 'DivyangCare Legal Team',
       status: 'available',
-      dueDate: '2024-03-20',
-      contactInfo: '+91 98765 43210'
+      contactInfo: 'legal@divyangcare.org'
     },
     {
       id: 2,
       title: 'Document Review',
-      description: 'Thorough review and analysis of legal documents.',
-      facility: 'Document Services',
-      provider: 'Adv. Sarah Johnson',
+      description: 'Thorough review and analysis of legal documents and contracts.',
+      facility: 'Legal Services',
+      provider: 'DivyangCare Legal Team',
       status: 'in-progress',
-      dueDate: '2024-03-18',
-      contactInfo: '+91 98765 43211'
+      contactInfo: 'legal@divyangcare.org'
     },
     {
       id: 3,
       title: 'Court Representation',
       description: 'Professional representation in court proceedings.',
       facility: 'Legal Services',
-      provider: 'Adv. Michael Brown',
+      provider: 'DivyangCare Legal Team',
       status: 'scheduled',
-      dueDate: '2024-03-25',
-      contactInfo: '+91 98765 43212'
-    },
-    {
-      id: 4,
-      title: 'Legal Documentation',
-      description: 'Preparation and filing of legal documents.',
-      facility: 'Document Services',
-      provider: 'Adv. Emily Davis',
-      status: 'completed',
-      dueDate: '2024-03-15',
-      contactInfo: '+91 98765 43213'
+      contactInfo: 'legal@divyangcare.org'
     }
   ];
 
-  availableFacilities = [
-    'Legal Services',
-    'Document Services',
-    'Financial Services',
-    'Healthcare Services'
-  ];
-
-  filters = {
+  filters: Filters = {
     facility: '',
     status: '',
     search: ''
@@ -79,16 +64,25 @@ export class TasksComponent {
 
   currentPage = 1;
   itemsPerPage = 6;
+  totalPages = 1;
+
+  get availableFacilities(): string[] {
+    return [...new Set(this.services.map(service => service.facility))];
+  }
 
   get filteredServices(): Service[] {
-    let filtered = [...this.services];
+    let filtered = this.services;
 
     if (this.filters.facility) {
-      filtered = filtered.filter(service => service.facility === this.filters.facility);
+      filtered = filtered.filter(service => 
+        service.facility === this.filters.facility
+      );
     }
 
     if (this.filters.status) {
-      filtered = filtered.filter(service => service.status === this.filters.status);
+      filtered = filtered.filter(service => 
+        service.status === this.filters.status
+      );
     }
 
     if (this.filters.search) {
@@ -100,25 +94,9 @@ export class TasksComponent {
       );
     }
 
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return filtered.slice(startIndex, startIndex + this.itemsPerPage);
-  }
-
-  get totalPages(): number {
-    return Math.ceil(this.services.length / this.itemsPerPage);
-  }
-
-  formatStatus(status: string): string {
-    return status
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  }
-
-  changePage(page: number): void {
-    if (page >= 1 && page <= this.totalPages) {
-      this.currentPage = page;
-    }
+    this.totalPages = Math.ceil(filtered.length / this.itemsPerPage);
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return filtered.slice(start, start + this.itemsPerPage);
   }
 
   getPageNumbers(): number[] {
@@ -127,5 +105,21 @@ export class TasksComponent {
       pages.push(i);
     }
     return pages;
+  }
+
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
+  formatStatus(status: string): string {
+    return status.split('-').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  }
+
+  ngOnInit(): void {
+    // Initialize component
   }
 }

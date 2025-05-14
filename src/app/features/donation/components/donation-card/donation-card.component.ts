@@ -7,7 +7,7 @@ import { DonationOption } from '../../../../services/donation.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './donation-card.component.html',
-  styleUrls: ['./donation-card.component.scss']
+  // styleUrls: ['./donation-card.component.scss']
 })
 export class DonationCardComponent {
   @Input() option!: DonationOption;

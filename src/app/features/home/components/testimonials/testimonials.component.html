@@ -1,30 +1,28 @@
-<section class="testimonials">
-  <div class="container">
-    <div class="section-header text-center mb-4">
-      <h2>Testimonials</h2>
-      <p>What people say about our initiatives and impact</p>
+<section class="testimonials bg-green-50 flex flex-col items-center justify-center min-h-[350px]">
+  <div class="container mx-auto px-4 py-16">
+    <div class="section-header text-center mb-12 flex flex-col items-center justify-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-4">Testimonials</h2>
+      <p class="text-lg text-green-800 max-w-2xl mx-auto">What people say about our initiatives and impact</p>
     </div>
     
-    <div class="testimonial-slider">
-      <div class="testimonial-cards">
-        @for (testimonial of testimonials; track testimonial.id) {
-          <div class="testimonial-card card slide-in">
-            <div class="quote-icon">
-              <span class="material-symbols-outlined">format_quote</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (testimonial of testimonials; track testimonial.id) {
+        <div class="testimonial-card bg-white rounded-lg shadow-md p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border-l-4 border-green-400">
+          <div class="quote-icon text-green-600 mb-4">
+            <span class="material-symbols-outlined text-4xl">format_quote</span>
+          </div>
+          <p class="quote text-green-800 italic mb-6">{{ testimonial.quote }}</p>
+          <div class="author-info flex items-center">
+            <div class="author-image w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img [src]="testimonial.image" [alt]="testimonial.author" class="w-full h-full object-cover" loading="lazy">
             </div>
-            <p class="quote">{{ testimonial.quote }}</p>
-            <div class="author-info">
-              <div class="author-image">
-                <img [src]="testimonial.image" [alt]="testimonial.author" loading="lazy">
-              </div>
-              <div class="author-details">
-                <h4>{{ testimonial.author }}</h4>
-                <p>{{ testimonial.role }}</p>
-              </div>
+            <div class="author-details">
+              <h4 class="text-green-900 font-semibold">{{ testimonial.author }}</h4>
+              <p class="text-green-700 text-sm">{{ testimonial.role }}</p>
             </div>
           </div>
-        }
-      </div>
+        </div>
+      }
     </div>
   </div>
 </section> 

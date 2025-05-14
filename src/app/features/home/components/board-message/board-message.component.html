@@ -1,39 +1,43 @@
-<section class="board-message-section">
-  <div class="container">
-    <h2 class="section-title">Message from Our Board</h2>
-    <div *ngIf="carousel; else staticList" class="carousel">
-      <button class="carousel-btn left" (click)="prev()">&#8592;</button>
-      <div class="carousel-content">
-        <div class="board-message-card" *ngFor="let msg of [currentMessage]">
-          <div class="board-image">
-            <img [src]="msg.image" [alt]="msg.name" />
-          </div>
-          <div class="board-details">
-            <h4>{{ msg.name }}</h4>
-            <p class="role">{{ msg.role }}</p>
-            <p class="message">"{{ msg.message }}"</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-btn right" (click)="next()">&#8594;</button>
+<section class="board-message bg-white relative overflow-hidden">
+  <!-- Background Accent SVG -->
+  <svg class="absolute left-1/2 top-0 -translate-x-1/2 -z-10 w-[700px] h-[700px] opacity-30 pointer-events-none select-none" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="accentGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <circle cx="350" cy="350" r="350" fill="url(#accentGradient)" />
+  </svg>
+
+  <div class="container mx-auto px-4 py-16 relative z-10">
+    <div class="section-header text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary-800 mb-4">Message from Our Board</h2>
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto">Meet our leadership team</p>
     </div>
+
+    <div *ngIf="carousel; else staticList" class="flex justify-center">
+      <div class="relative w-full max-w-sm flex items-center min-h-[340px]">
+        <button class="carousel-btn absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-primary-50 transition-colors z-10" (click)="prev()">
+          <span class="material-symbols-outlined text-2xl text-primary-600">chevron_left</span>
+        </button>
+        <div class="board-message-card bg-neutral-50 rounded-lg shadow-md overflow-hidden flex flex-col items-center w-full mx-8 p-8 min-h-[300px]">
+          <img [src]="currentMessage.image || 'assets/images/team/default.jpg'" [alt]="currentMessage.name" class="w-40 h-40 object-cover rounded-full border-4 border-primary-100 shadow mb-4">
+          <h4 class="text-xl font-semibold text-primary-700 mb-1 text-center">{{ currentMessage.name }}</h4>
+          <p class="text-primary-600 font-medium mb-2 text-center">{{ currentMessage.role }}</p>
+        </div>
+        <button class="carousel-btn absolute right-0 top-1/2 translate-y-[-50%] translate-x-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-primary-50 transition-colors z-10" (click)="next()">
+          <span class="material-symbols-outlined text-2xl text-primary-600">chevron_right</span>
+        </button>
+      </div>
+    </div>
+
     <ng-template #staticList>
-      <div class="board-message-list">
-        <div class="board-message-card" *ngFor="let msg of boardMessages">
-          <div class="board-image">
-            <img [src]="msg.image" [alt]="msg.name" />
-          </div>
-          <div class="board-details">
-            <h4>{{ msg.name }}</h4>
-            <p class="role">{{ msg.role }}</p>
-            <div class="facilities">
-              <h5>Services & Facilities:</h5>
-              <ul class="facilities-list">
-                <li *ngFor="let facility of msg.facilities">{{ facility }}</li>
-              </ul>
-            </div>
-            <p class="message">"{{ msg.message }}"</p>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div *ngFor="let msg of boardMessages" class="board-message-card bg-neutral-50 rounded-lg shadow-md overflow-hidden flex flex-col items-center p-8">
+          <img [src]="msg.image || 'assets/images/team/default.jpg'" [alt]="msg.name" class="w-40 h-40 object-cover rounded-full border-4 border-primary-100 shadow mb-4">
+          <h4 class="text-xl font-semibold text-primary-700 mb-1 text-center">{{ msg.name }}</h4>
+          <p class="text-primary-600 font-medium mb-2 text-center">{{ msg.role }}</p>
         </div>
       </div>
     </ng-template>

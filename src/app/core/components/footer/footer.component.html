@@ -1,52 +1,73 @@
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section about">
-        <h3>DivyangCareTrust</h3>
-        <p>Empowering lives through care, compassion, and sustainable initiatives. Together we can make a difference.</p>
+<footer class="bg-green-800 text-white relative overflow-hidden">
+  <div class="container mx-auto px-4 py-12 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div class="footer-section">
+        <h3 class="text-xl font-semibold mb-4 text-green-200">DivyangCareTrust</h3>
+        <p class="text-green-100">Empowering lives through care, compassion, and sustainable initiatives. Together we can make a difference.</p>
       </div>
       
-      <div class="footer-section links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/about">About Us</a></li>
-          <li><a routerLink="/programs">Programs</a></li>
-          <li><a routerLink="/gallery">Gallery</a></li>
-          <li><a routerLink="/contact">Contact</a></li>
-          <li><a routerLink="/tasks">Tasks</a></li>
+      <div class="footer-section">
+        <h3 class="text-xl font-semibold mb-4 text-green-200">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a routerLink="/" class="text-green-100 hover:text-green-300 transition-colors">Home</a></li>
+          <li><a routerLink="/about" class="text-green-100 hover:text-green-300 transition-colors">About Us</a></li>
+          <li><a routerLink="/programs" class="text-green-100 hover:text-green-300 transition-colors">Programs</a></li>
+          <li><a routerLink="/gallery" class="text-green-100 hover:text-green-300 transition-colors">Gallery</a></li>
+          <li><a routerLink="/contact" class="text-green-100 hover:text-green-300 transition-colors">Contact</a></li>
+          <li><a routerLink="/tasks" class="text-green-100 hover:text-green-300 transition-colors">Tasks</a></li>
         </ul>
       </div>
       
-      <div class="footer-section programs">
-        <h3>Our Programs</h3>
-        <ul>
-          <li><a routerLink="/programs">Plantation Drives</a></li>
-          <li><a routerLink="/programs">Goodies Distribution</a></li>
-          <li><a routerLink="/programs">Learning Courses</a></li>
-          <li><a routerLink="/programs">Certification Programs</a></li>
+      <div class="footer-section">
+        <h3 class="text-xl font-semibold mb-4 text-green-200">Our Programs</h3>
+        <ul class="space-y-2">
+          <li><a routerLink="/programs" class="text-green-100 hover:text-green-300 transition-colors">Plantation Drives</a></li>
+          <li><a routerLink="/programs" class="text-green-100 hover:text-green-300 transition-colors">Goodies Distribution</a></li>
+          <li><a routerLink="/programs" class="text-green-100 hover:text-green-300 transition-colors">Learning Courses</a></li>
+          <li><a routerLink="/programs" class="text-green-100 hover:text-green-300 transition-colors">Certification Programs</a></li>
         </ul>
       </div>
       
-      <div class="footer-section contact">
-        <h3>Contact Us</h3>
-        <p><span class="material-symbols-outlined">location_on</span> 123 NGO Street, Green City</p>
-        <p><span class="material-symbols-outlined">call</span> +91 9876543210</p>
-        <p><span class="material-symbols-outlined">mail</span> infodivyangcaretrust.org</p>
-        <div class="social-links">
-          <a href="#replace with facebook link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#replace with twitter link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#replace with instagram link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#replace with linkedin link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <div class="footer-section">
+        <h3 class="text-xl font-semibold mb-4 text-green-200">Contact Us</h3>
+        <div class="space-y-3">
+          <p class="flex items-center text-green-100">
+            <span class="material-symbols-outlined mr-2">location_on</span>
+            123 NGO Street, Green City
+          </p>
+          <p class="flex items-center text-green-100">
+            <span class="material-symbols-outlined mr-2">call</span>
+            +91 9876543210
+          </p>
+          <p class="flex items-center text-green-100">
+            <span class="material-symbols-outlined mr-2">mail</span>
+            infodivyangcaretrust.org
+          </p>
+        </div>
+        <div class="social-links flex gap-4 mt-4">
+          <a href="#" class="text-green-100 hover:text-green-300 transition-colors" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-green-100 hover:text-green-300 transition-colors" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-green-100 hover:text-green-300 transition-colors" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-green-100 hover:text-green-300 transition-colors" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
         </div>
       </div>
     </div>
     
-    <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} DivyangCareTrust. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a routerLink="/privacy-policy">Privacy Policy</a>
-        <a routerLink="/terms-of-service">Terms of Service</a>
+    <div class="border-t border-green-800 pt-8 mt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-green-200">&copy; {{ currentYear }} DivyangCareTrust. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a routerLink="/privacy-policy" class="text-green-200 hover:text-green-300 transition-colors">Privacy Policy</a>
+          <a routerLink="/terms-of-service" class="text-green-200 hover:text-green-300 transition-colors">Terms of Service</a>
+        </div>
       </div>
     </div>
   </div>

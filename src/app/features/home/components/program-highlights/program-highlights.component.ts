@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './program-highlights.component.html',
-  styleUrls: ['./program-highlights.component.scss']
+  // styleUrls: ['./program-highlights.component.scss']
 })
 export class ProgramHighlightsComponent {
 }
