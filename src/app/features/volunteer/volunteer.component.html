@@ -1,0 +1,130 @@
+<div class="page-layout">
+  <section class="volunteer-hero">
+    <div class="container">
+      <h1>Join Our Volunteer Team</h1>
+      <p class="subtitle">Make a difference in the lives of differently-abled individuals by volunteering with us.</p>
+    </div>
+  </section>
+
+  <section class="volunteer-form">
+    <div class="container">
+      <div class="form-container">
+        <h2>Volunteer Application</h2>
+        <form (ngSubmit)="onSubmit()" #volunteerForm="ngForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="volunteer.name" 
+              required
+              #name="ngModel"
+            >
+            <div class="error-message" *ngIf="name.invalid && (name.dirty || name.touched)">
+              Name is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="volunteer.email" 
+              required
+              #email="ngModel"
+            >
+            <div class="error-message" *ngIf="email.invalid && (email.dirty || email.touched)">
+              Valid email is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              [(ngModel)]="volunteer.phone"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="skills">Skills (comma-separated)</label>
+            <input 
+              type="text" 
+              id="skills" 
+              name="skills" 
+              [(ngModel)]="skillsInput"
+              (blur)="updateSkills()"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="availability">Availability</label>
+            <select 
+              id="availability" 
+              name="availability" 
+              [(ngModel)]="volunteer.availability"
+            >
+              <option value="">Select availability</option>
+              <option value="weekday-morning">Weekday Mornings</option>
+              <option value="weekday-afternoon">Weekday Afternoons</option>
+              <option value="weekday-evening">Weekday Evenings</option>
+              <option value="weekend">Weekends</option>
+              <option value="flexible">Flexible</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="interests">Areas of Interest</label>
+            <div class="checkbox-group">
+              <label>
+                <input 
+                  type="checkbox" 
+                  name="interests" 
+                  value="education" 
+                  [(ngModel)]="selectedInterests.education"
+                > Education
+              </label>
+              <label>
+                <input 
+                  type="checkbox" 
+                  name="interests" 
+                  value="healthcare" 
+                  [(ngModel)]="selectedInterests.healthcare"
+                > Healthcare
+              </label>
+              <label>
+                <input 
+                  type="checkbox" 
+                  name="interests" 
+                  value="events" 
+                  [(ngModel)]="selectedInterests.events"
+                > Events
+              </label>
+              <label>
+                <input 
+                  type="checkbox" 
+                  name="interests" 
+                  value="administration" 
+                  [(ngModel)]="selectedInterests.administration"
+                > Administration
+              </label>
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            class="btn btn-primary" 
+            [disabled]="!volunteerForm.form.valid || isLoading"
+          >
+            {{ isLoading ? 'Submitting...' : 'Submit Application' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div> 

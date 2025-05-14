@@ -1,0 +1,31 @@
+<div class="page-layout">
+  <section class="gallery-hero">
+    <div class="container">
+      <h1>Gallery</h1>
+      <p class="subtitle">Capturing moments of impact and community</p>
+    </div>
+  </section>
+
+  <section class="gallery-content">
+    <div class="container">
+      <div class="gallery-filters">
+        <button class="filter-btn" [class.active]="selectedCategory === 'all'" (click)="filterGallery('all')">All</button>
+        <button class="filter-btn" [class.active]="selectedCategory === 'plantation'" (click)="filterGallery('plantation')">Plantation</button>
+        <button class="filter-btn" [class.active]="selectedCategory === 'events'" (click)="filterGallery('events')">Events</button>
+        <button class="filter-btn" [class.active]="selectedCategory === 'workshops'" (click)="filterGallery('workshops')">Workshops</button>
+      </div>
+
+      <div class="gallery-grid">
+        @for (item of filteredGalleryItems; track item.id) {
+          <div class="gallery-item">
+            <img [src]="item.imageUrl" [alt]="item.title" loading="lazy">
+            <div class="gallery-caption">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</div> 

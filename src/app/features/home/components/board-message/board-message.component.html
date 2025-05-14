@@ -1,0 +1,41 @@
+<section class="board-message-section">
+  <div class="container">
+    <h2 class="section-title">Message from Our Board</h2>
+    <div *ngIf="carousel; else staticList" class="carousel">
+      <button class="carousel-btn left" (click)="prev()">&#8592;</button>
+      <div class="carousel-content">
+        <div class="board-message-card" *ngFor="let msg of [currentMessage]">
+          <div class="board-image">
+            <img [src]="msg.image" [alt]="msg.name" />
+          </div>
+          <div class="board-details">
+            <h4>{{ msg.name }}</h4>
+            <p class="role">{{ msg.role }}</p>
+            <p class="message">"{{ msg.message }}"</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn right" (click)="next()">&#8594;</button>
+    </div>
+    <ng-template #staticList>
+      <div class="board-message-list">
+        <div class="board-message-card" *ngFor="let msg of boardMessages">
+          <div class="board-image">
+            <img [src]="msg.image" [alt]="msg.name" />
+          </div>
+          <div class="board-details">
+            <h4>{{ msg.name }}</h4>
+            <p class="role">{{ msg.role }}</p>
+            <div class="facilities">
+              <h5>Services & Facilities:</h5>
+              <ul class="facilities-list">
+                <li *ngFor="let facility of msg.facilities">{{ facility }}</li>
+              </ul>
+            </div>
+            <p class="message">"{{ msg.message }}"</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section> 

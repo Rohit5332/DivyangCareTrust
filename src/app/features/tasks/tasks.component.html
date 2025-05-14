@@ -1,0 +1,146 @@
+<div class="page-layout">
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Legal Services & Support</h1>
+      <p class="page-description">
+        Your trusted legal partner for comprehensive legal and financial solutions. With years of experience and a client-first approach, 
+        we handle a wide range of matters with dedication and expertise.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="container">
+      <!-- Why Choose Us -->
+      <div class="why-choose-us">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <h3>Personalized Service</h3>
+            <p>Tailored legal solutions to meet your specific needs</p>
+          </div>
+          <div class="feature-item">
+            <h3>Strong Representation</h3>
+            <p>Experienced courtroom presence and advocacy</p>
+          </div>
+          <div class="feature-item">
+            <h3>Transparent Process</h3>
+            <p>Clear communication and affordable fees</p>
+          </div>
+          <div class="feature-item">
+            <h3>Complete Confidentiality</h3>
+            <p>Your privacy and trust are our priority</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filters-grid">
+          <div class="filter-item">
+            <label class="filter-label">Service Category</label>
+            <select 
+              [(ngModel)]="filters.facility" 
+              class="filter-select"
+            >
+              <option value="">All Services</option>
+              <option *ngFor="let facility of availableFacilities" [value]="facility">
+                {{ facility }}
+              </option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label class="filter-label">Status</label>
+            <select 
+              [(ngModel)]="filters.status" 
+              class="filter-select"
+            >
+              <option value="">All Status</option>
+              <option value="available">Available</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+              <option value="scheduled">Scheduled</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label class="filter-label">Search</label>
+            <input 
+              type="text" 
+              [(ngModel)]="filters.search" 
+              placeholder="Search legal services..."
+              class="filter-input"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Services List -->
+      <div class="services-grid">
+        <div *ngFor="let service of filteredServices" class="service-card">
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+          <div class="service-details">
+            <p class="service-info">
+              <span class="info-label">Category:</span> {{ service.facility }}
+            </p>
+            <p class="service-info">
+              <span class="info-label">Provider:</span> {{ service.provider }}
+            </p>
+            <p class="service-info">
+              <span class="info-label">Status:</span> 
+              <span [class]="'status-badge ' + service.status">
+                {{ formatStatus(service.status) }}
+              </span>
+            </p>
+            <p class="service-info">
+              <span class="info-label">Contact:</span> {{ service.contactInfo }}
+            </p>
+          </div>
+          <button 
+            *ngIf="service.status === 'available'"
+            class="request-button"
+          >
+            Schedule Consultation
+          </button>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="contact-section">
+        <h2 class="section-title">Available for Consultation</h2>
+        <p class="contact-text">
+          Let legal stress be our responsibility. Contact us today for professional guidance and powerful representation.
+          Available for consultation in Aligarh & Online.
+        </p>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <nav class="pagination-nav">
+          <button 
+            (click)="changePage(currentPage - 1)"
+            [disabled]="currentPage === 1"
+            class="pagination-button"
+          >
+            Previous
+          </button>
+          <button 
+            *ngFor="let page of getPageNumbers()"
+            (click)="changePage(page)"
+            [class.active]="page === currentPage"
+            class="pagination-button"
+          >
+            {{ page }}
+          </button>
+          <button 
+            (click)="changePage(currentPage + 1)"
+            [disabled]="currentPage === totalPages"
+            class="pagination-button"
+          >
+            Next
+          </button>
+        </nav>
+      </div>
+    </div>
+  </section>
+</div> 

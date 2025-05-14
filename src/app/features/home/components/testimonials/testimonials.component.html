@@ -1,0 +1,30 @@
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header text-center mb-4">
+      <h2>Testimonials</h2>
+      <p>What people say about our initiatives and impact</p>
+    </div>
+    
+    <div class="testimonial-slider">
+      <div class="testimonial-cards">
+        @for (testimonial of testimonials; track testimonial.id) {
+          <div class="testimonial-card card slide-in">
+            <div class="quote-icon">
+              <span class="material-symbols-outlined">format_quote</span>
+            </div>
+            <p class="quote">{{ testimonial.quote }}</p>
+            <div class="author-info">
+              <div class="author-image">
+                <img [src]="testimonial.image" [alt]="testimonial.author" loading="lazy">
+              </div>
+              <div class="author-details">
+                <h4>{{ testimonial.author }}</h4>
+                <p>{{ testimonial.role }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section> 

@@ -1,0 +1,22 @@
+<section class="impact-counter">
+  <div class="container">
+    <div class="section-header text-center mb-4">
+      <h2>Our Impact</h2>
+      <p>The numbers that showcase our commitment to creating positive change</p>
+    </div>
+    
+    <div class="metrics">
+      @for (metric of impactMetrics; track metric.title) {
+        <div class="metric-card fade-in">
+          <div class="metric-icon">
+            <span class="material-symbols-outlined">{{ metric.icon }}</span>
+          </div>
+          <div class="metric-value">
+            <span class="counter">{{ metric.value }}</span>{{ metric.suffix }}
+          </div>
+          <div class="metric-title">{{ metric.title }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section> 

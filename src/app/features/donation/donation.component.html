@@ -1,0 +1,48 @@
+<div class="page-layout">
+  <section class="donation-hero">
+    <div class="container">
+      <h1>Make a Difference Today</h1>
+      <p class="subtitle">Your contribution can help us create a more inclusive and sustainable future for differently-abled individuals.</p>
+    </div>
+  </section>
+
+  <section class="donation-options">
+    <div class="container">
+      <h2>Choose Your Donation Amount</h2>
+      <p class="section-description">Select an amount that resonates with you. Every contribution makes a difference.</p>
+      
+      <div class="donation-grid">
+        <app-donation-card
+          *ngFor="let option of donationOptions"
+          [option]="option"
+          [isSelected]="selectedOption === option"
+          (selected)="onDonationSelected($event)"
+        ></app-donation-card>
+      </div>
+
+      <div class="donation-form" *ngIf="selectedOption">
+        <h3>Complete Your Donation</h3>
+        <form (ngSubmit)="onSubmit()" #donationForm="ngForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="donation.name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" [(ngModel)]="donation.email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message (Optional)</label>
+            <textarea id="message" name="message" [(ngModel)]="donation.message" rows="3"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" [disabled]="!donationForm.form.valid || isLoading">
+            {{ isLoading ? 'Processing...' : 'Complete Donation' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div> 

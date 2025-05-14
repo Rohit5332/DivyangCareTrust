@@ -1,0 +1,6 @@
+<div class="donation-card" [class.selected]="isSelected" (click)="selectDonation()">
+  <div class="donation-amount">
+    <span class="currency">₹</span>{{ option.amount }}
+  </div>
+  <p class="donation-description">{{ option.description }}</p>
+</div> 

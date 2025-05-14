@@ -1,0 +1,62 @@
+<header [class.scrolled]="scrolled()">
+  <div class="container header-container">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/dicatlogo.jpg" alt="Dicat Logo" class="logo-image">
+        <span class="logo-text">DivyangCareTrust</span>
+      </a>
+    </div>
+    
+    <div class="nav-container">
+      <nav class="desktop-nav">
+        <ul>
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+          <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+          <li><a routerLink="/programs" routerLinkActive="active">Programs</a></li>
+          <li><a routerLink="/gallery" routerLinkActive="active">Gallery</a></li>
+          <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+          <li><a routerLink="/tasks" routerLinkActive="active">Tasks</a></li>
+          <li><a routerLink="/volunteer" routerLinkActive="active">Volunteer</a></li>
+          <li><a routerLink="/donate" class="donate-btn" routerLinkActive="active">Donate</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons desktop-only auth-dropdown">
+        <button class="btn btn-secondary dropdown-toggle" (click)="toggleAuthDropdown()" [attr.aria-expanded]="authDropdownOpen">
+          Login
+          <span class="material-symbols-outlined" style="font-size: 1.2em;">expand_more</span>
+        </button>
+        <div class="dropdown-menu" *ngIf="authDropdownOpen">
+          <a routerLink="/login" (click)="closeAuthDropdown()">Login</a>
+          <a routerLink="/register" (click)="closeAuthDropdown()">Register</a>
+        </div>
+      </div>
+    </div>
+    
+    <button class="mobile-menu-button" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+      <span class="material-symbols-outlined">{{ mobileMenuOpen() ? 'close' : 'menu' }}</span>
+    </button>
+  </div>
+  
+  <div class="mobile-menu" [class.open]="mobileMenuOpen()">
+    <button class="mobile-menu-close" (click)="closeMobileMenu()" aria-label="Close menu">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <nav>
+      <ul>
+        <li><a routerLink="/" (click)="closeMobileMenu()">Home</a></li>
+        <li><a routerLink="/about" (click)="closeMobileMenu()">About Us</a></li>
+        <li><a routerLink="/programs" (click)="closeMobileMenu()">Programs</a></li>
+        <li><a routerLink="/gallery" (click)="closeMobileMenu()">Gallery</a></li>
+        <li><a routerLink="/contact" (click)="closeMobileMenu()">Contact</a></li>
+        <li><a routerLink="/tasks" (click)="closeMobileMenu()">Tasks</a></li>
+        <li><a routerLink="/volunteer" (click)="closeMobileMenu()">Volunteer</a></li>
+        <li><a routerLink="/donate" class="donate-btn" (click)="closeMobileMenu()">Donate</a></li>
+      </ul>
+      <div class="auth-buttons mobile-auth">
+        <a routerLink="/login" class="btn btn-secondary" (click)="closeMobileMenu()">Login</a>
+        <a routerLink="/register" class="btn btn-primary" (click)="closeMobileMenu()">Register</a>
+      </div>
+    </nav>
+  </div>
+</header> 
