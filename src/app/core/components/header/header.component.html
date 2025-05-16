@@ -1,4 +1,4 @@
-<header [class.scrolled]="scrolled()" class="fixed top-0 left-0 w-full bg-white backdrop-blur-sm shadow-lg z-50 transition-all duration-300 border-b-2 border-green-200">
+<header [class.scrolled]="scrolled()" class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 transition-shadow duration-300 border-b-2 border-green-200">
   <div class="container mx-auto px-4 h-16 flex items-center justify-between">
     <div class="logo flex items-center">
       <a routerLink="/" class="flex items-center gap-2">
@@ -37,36 +37,35 @@
       <span class="material-symbols-outlined text-2xl">{{ mobileMenuOpen() ? 'close' : 'menu' }}</span>
     </button>
   </div>
-  
-  <div class="mobile-menu" [class.open]="mobileMenuOpen()" [class.closed]="!mobileMenuOpen()">
-    <div class="container mx-auto px-4 py-6">
-      <div class="flex justify-between items-center mb-8">
-        <div class="logo flex items-center">
-          <a routerLink="/" class="flex items-center gap-2" (click)="closeMobileMenu()">
-            <img src="assets/dicatlogo.jpg" alt="Dicat Logo" class="h-10 w-10 object-cover rounded-full">
-            <span class="text-xl font-semibold text-primary-700">DivyangCareTrust</span>
-          </a>
-        </div>
-        <button class="p-2 text-neutral-700 hover:text-primary-600 transition-colors" (click)="closeMobileMenu()" aria-label="Close menu">
-          <span class="material-symbols-outlined text-2xl">close</span>
-        </button>
+</header>
+<div class="mobile-menu overflow-y-auto z-[9999]" *ngIf="mobileMenuOpen()" [@slideInOut]>
+  <div class="w-full px-4 py-6">
+    <div class="flex justify-between items-center mb-8">
+      <div class="logo flex items-center">
+        <a routerLink="/" class="flex items-center gap-2" (click)="closeMobileMenu()">
+          <img src="assets/dicatlogo.jpg" alt="Dicat Logo" class="h-10 w-10 object-cover rounded-full">
+          <span class="text-xl font-semibold text-primary-700">DivyangCareTrust</span>
+        </a>
       </div>
-      <nav class="mb-8">
-        <ul class="space-y-4">
-          <li><a routerLink="/" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Home</a></li>
-          <li><a routerLink="/about" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">About Us</a></li>
-          <li><a routerLink="/programs" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Programs</a></li>
-          <li><a routerLink="/gallery" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Gallery</a></li>
-          <li><a routerLink="/contact" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Contact</a></li>
-          <li><a routerLink="/tasks" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Tasks</a></li>
-          <li><a routerLink="/volunteer" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Volunteer</a></li>
-          <li><a routerLink="/donate" (click)="closeMobileMenu()" class="block text-lg px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">Donate</a></li>
-        </ul>
-      </nav>
-      <div class="auth-buttons space-y-4">
-        <a routerLink="/login" (click)="closeMobileMenu()" class="block w-full px-4 py-2 bg-neutral-100 text-neutral-700 rounded-md hover:bg-neutral-200 transition-colors text-center">Login</a>
-        <a routerLink="/register" (click)="closeMobileMenu()" class="block w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-center">Register</a>
-      </div>
+      <button class="p-2 text-neutral-700 hover:text-primary-600 transition-colors" (click)="closeMobileMenu()" aria-label="Close menu">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <nav class="mb-8">
+      <ul class="space-y-4">
+        <li><a routerLink="/" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Home</a></li>
+        <li><a routerLink="/about" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">About Us</a></li>
+        <li><a routerLink="/programs" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Programs</a></li>
+        <li><a routerLink="/gallery" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Gallery</a></li>
+        <li><a routerLink="/contact" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Contact</a></li>
+        <li><a routerLink="/tasks" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Tasks</a></li>
+        <li><a routerLink="/volunteer" (click)="closeMobileMenu()" class="block text-lg text-neutral-700 hover:text-primary-600 transition-colors">Volunteer</a></li>
+        <li><a routerLink="/donate" (click)="closeMobileMenu()" class="block text-lg px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">Donate</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons space-y-4">
+      <a routerLink="/login" (click)="closeMobileMenu()" class="block w-full px-4 py-2 bg-neutral-100 text-neutral-700 rounded-md hover:bg-neutral-200 transition-colors text-center">Login</a>
+      <a routerLink="/register" (click)="closeMobileMenu()" class="block w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-center">Register</a>
     </div>
   </div>
-</header> 
+</div> 

@@ -1,12 +1,26 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { debounceTime } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('300ms ease-out', style({ transform: 'translateX(0)' }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in', style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ],
   styles: [`
     :host {
       display: block;
@@ -23,13 +37,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     }
 
     .mobile-menu {
-      @apply fixed inset-0 bg-white z-50 transform transition-transform duration-300;
-      &.open {
-        @apply translate-x-0;
-      }
-      &.closed {
-        @apply translate-x-full;
-      }
+      @apply fixed inset-0 bg-white z-50;
     }
   `]
 })
@@ -38,9 +46,13 @@ export class HeaderComponent {
   mobileMenuOpen = signal(false);
   authDropdownOpen = false;
   
-  @HostListener('window:scroll')
-  onWindowScroll() {
-    this.scrolled.set(window.scrollY > 0);
+  constructor() {
+    // Debounced scroll handling
+    fromEvent(window, 'scroll')
+      .pipe(debounceTime(10))
+      .subscribe(() => {
+        this.scrolled.set(window.scrollY > 0);
+      });
   }
   
   toggleMobileMenu() {

@@ -1,12 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './features/home/home.component';
-import { DonationComponent } from './features/donation/donation.component';
-import { VolunteerComponent } from './features/volunteer/volunteer.component';
+import { PreloadAllModules } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
     title: 'DivyangCareTrust - Home'
   },
   {
@@ -36,12 +34,12 @@ export const routes: Routes = [
   },
   {
     path: 'donate',
-    component: DonationComponent,
+    loadComponent: () => import('./features/donation/donation.component').then(m => m.DonationComponent),
     title: 'Donate - DivyangCareTrust'
   },
   {
     path: 'volunteer',
-    component: VolunteerComponent,
+    loadComponent: () => import('./features/volunteer/volunteer.component').then(m => m.VolunteerComponent),
     title: 'Volunteer - DivyangCareTrust'
   },
   // {
